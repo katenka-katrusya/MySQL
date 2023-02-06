@@ -49,7 +49,7 @@ VALUES
 ## SELECT-запрос, который выводит название товара, производителя и цену для товаров, количество которых превышает 2
 ```
 SELECT 
-	product_name as 'Название товара',
+    product_name as 'Название товара',
     manufacturer as 'Производитель',
     price as 'Цена'
 FROM mobile_phone
