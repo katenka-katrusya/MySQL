@@ -46,3 +46,37 @@ VALUES
     ('Galaxy S21', 'Samsung', 1, 65599),
     ('Master Edition', 'GT', 1, 25999);
 ```
+## SELECT-запрос, который выводит название товара, производителя и цену для товаров, количество которых превышает 2
+```
+SELECT 
+	product_name as 'Название товара',
+    manufacturer as 'Производитель',
+    price as 'Цена'
+FROM mobile_phone
+WHERE product_count >2;
+```
+## Выводим SELECT-запросом весь ассортимент товаров марки “Samsung”
+```
+SELECT * FROM mobile_phone
+WHERE manufacturer = 'Samsung'
+```
+## С помощью SELECT-запроса с оператором LIKE / REGEXP найти товары, в которых есть упоминание "Iphone"
+```
+SELECT * FROM mobile_phone
+WHERE product_name LIKE 'iPhone%';
+```
+## С помощью SELECT-запроса с оператором LIKE / REGEXP найти товары, в которых есть упоминание "Samsung"
+```
+SELECT * FROM mobile_phone
+WHERE manufacturer LIKE 'Samsung';
+```
+## С помощью SELECT-запроса с оператором LIKE / REGEXP найти товары, в названии которых есть ЦИФРЫ
+```
+SELECT * FROM mobile_phone
+WHERE product_name REGEXP '[[:digit:]]';
+```
+## С помощью SELECT-запроса с оператором LIKE / REGEXP найти товары, в названии которых есть ЦИФРА "8"
+```
+SELECT * FROM mobile_phone
+WHERE product_name REGEXP '[8]';
+```
