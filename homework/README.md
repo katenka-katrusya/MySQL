@@ -23,7 +23,7 @@ CREATE SCHEMA 'homework1';
 ```
 CREATE TABLE mobile_phone
 ( 
-	phone_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    phone_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50),
     manufacturer VARCHAR(30),
     product_count INTEGER,
