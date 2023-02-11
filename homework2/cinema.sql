@@ -103,6 +103,20 @@ SELECT
     age_limit AS 'Возрастное ограничение'
 FROM cinema;
 
+-- CASE
+SELECT film_title AS 'Название фильма',
+	CASE age_limit
+		WHEN '16+' THEN 'Можно с 16 лет'
+		WHEN '18+' THEN 'Вам должно быть 18!'
+		ELSE 'Смотреть можно детям'
+	END AS 'Возраст' 
+FROM cinema;
+
+-- IF
+SELECT film_title AS 'Название фильма',
+    IF (film_released >= 2000, 'Современный фильм', 'Старый фильм') AS 'Современность'
+FROM cinema;
+
 -- заполнение таблицы жанров
 INSERT INTO genre
 	(genre_title)
