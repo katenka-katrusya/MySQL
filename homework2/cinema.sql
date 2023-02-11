@@ -13,6 +13,19 @@ CREATE TABLE cinema
     age_limit VARCHAR(5) NOT NULL
 );
 
+-- переименование делается с помощью команды RENAME
+-- 1) RENAME TABLE cinema TO films;
+-- или через ALTER TABLE
+-- ALTER TABLE cinema
+-- RENAME TO films;
+-- 2) Если надо переименовать столбец, то 
+-- ALTER TABLE cinema 
+-- RENAME COLUMN film_title TO film_name;
+
+-- добавление нового столбца происходит с помощью ADD
+-- ALTER TABLE cinema
+-- ADD actor VARCHAR(50) NOT NULL;
+
 -- таблица, содержащая жанры 
 DROP TABLE IF EXISTS genre;
 CREATE TABLE genre
