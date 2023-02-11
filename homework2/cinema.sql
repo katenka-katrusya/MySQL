@@ -6,7 +6,7 @@ USE homework;
 DROP TABLE IF EXISTS cinema;
 CREATE TABLE cinema
 (
-	film_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    film_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     film_title VARCHAR(50) NOT NULL,
     film_released YEAR NOT NULL,
     film_original_name VARCHAR(50),
@@ -30,7 +30,7 @@ CREATE TABLE cinema
 DROP TABLE IF EXISTS genre;
 CREATE TABLE genre
 (
-	genre_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    genre_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     genre_title VARCHAR(30) NOT NULL
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE genre
 DROP TABLE IF EXISTS creator_studio;
 CREATE TABLE creator_studio
 (
-	studio_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    studio_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     studio_title VARCHAR(50) NOT NULL
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE creator_studio
 DROP TABLE IF EXISTS manufacturer_country;
 CREATE TABLE manufacturer_country
 (
-	country_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    country_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     country_title VARCHAR(30) NOT NULL
 );
 
@@ -54,9 +54,9 @@ CREATE TABLE manufacturer_country
 DROP TABLE IF EXISTS cinema_genre;
 CREATE TABLE cinema_genre
 (
-	film_id INT,
-	genre_id INT,
-	FOREIGN KEY (film_id) REFERENCES cinema (film_id) ON DELETE CASCADE,
+    film_id INT,
+    genre_id INT,
+    FOREIGN KEY (film_id) REFERENCES cinema (film_id) ON DELETE CASCADE,
     FOREIGN KEY (genre_id) REFERENCES genre (genre_id) ON DELETE CASCADE
 );
 
@@ -64,7 +64,7 @@ CREATE TABLE cinema_genre
 DROP TABLE IF EXISTS cinema_studio;
 CREATE TABLE cinema_studio
 (
-	film_id INT,
+    film_id INT,
     studio_id INT,
     FOREIGN KEY (film_id) REFERENCES cinema (film_id) ON DELETE CASCADE,
     FOREIGN KEY (studio_id) REFERENCES creator_studio (studio_id) ON DELETE CASCADE
@@ -74,7 +74,7 @@ CREATE TABLE cinema_studio
 DROP TABLE IF EXISTS cinema_country;
 CREATE TABLE cinema_country
 (
-	film_id INT,
+    film_id INT,
     country_id INT,
     FOREIGN KEY (film_id) REFERENCES cinema (film_id) ON DELETE CASCADE,
     FOREIGN KEY (country_id) REFERENCES manufacturer_country (country_id) ON DELETE CASCADE
@@ -82,9 +82,9 @@ CREATE TABLE cinema_country
 
 -- заполнение таблицы фильмов
 INSERT INTO cinema
-	(film_title, film_original_name, film_released, age_limit)
+    (film_title, film_original_name, film_released, age_limit)
 VALUES 
-	('Зелёная миля', 'The Green Mile', 1999, '16+'),
+    ('Зелёная миля', 'The Green Mile', 1999, '16+'),
     ('Форест Гамп', 'Forrest Gump', 1994, '16+'),
     ('Интерстеллар', 'Interstellar', 2014, '16+'),
     ('Игры разума', 'A Beautiful Mind', 2001, '12+'),
@@ -96,7 +96,7 @@ SELECT * FROM cinema;
 
 -- оператор псевдонима
 SELECT 
-	film_id AS '№',
+    film_id AS '№',
     film_title AS 'Название',
     film_released AS 'Премьера фильма',
     film_original_name AS 'Оригинальное название',
@@ -105,11 +105,11 @@ FROM cinema;
 
 -- CASE
 SELECT film_title AS 'Название фильма',
-	CASE age_limit
-		WHEN '16+' THEN 'Можно с 16 лет'
-		WHEN '18+' THEN 'Вам должно быть 18!'
-		ELSE 'Смотреть можно детям'
-	END AS 'Возраст' 
+     CASE age_limit
+	WHEN '16+' THEN 'Можно с 16 лет'
+	WHEN '18+' THEN 'Вам должно быть 18!'
+	ELSE 'Смотреть можно детям'
+     END AS 'Возраст' 
 FROM cinema;
 
 -- IF
@@ -119,10 +119,10 @@ FROM cinema;
 
 -- заполнение таблицы жанров
 INSERT INTO genre
-	(genre_title)
+    (genre_title)
 VALUES
-	('Драма'),
-	('Фэнтези'),
+    ('Драма'),
+    ('Фэнтези'),
     ('Криминал'),
     ('Комедия'),
     ('Фантастика'),
@@ -140,15 +140,15 @@ SELECT * FROM genre;
 
 -- оператор псевдонима
 SELECT 
-	genre_id AS '№ жанра',
-	genre_title AS 'Жанр'
+     genre_id AS '№ жанра',
+     genre_title AS 'Жанр'
 FROM genre;
 
 -- заполнение таблицы студий
 INSERT INTO creator_studio
-	(studio_title)
+    (studio_title)
 VALUES
-	('Warner Hollywood Studios'),
+    ('Warner Hollywood Studios'),
     ('Paramount Pictures'),
     ('The Steve Tisch Company'),
     ('Wendy Finerman Productions'),
@@ -166,15 +166,15 @@ VALUES
 SELECT * FROM creator_studio;
 
 SELECT
-	studio_id AS '№', 
+    studio_id AS '№', 
     studio_title AS 'Студия'
 FROM creator_studio;
 
 -- заполнение таблицы стран
 INSERT INTO manufacturer_country
-	(country_title)
+    (country_title)
 VALUES
-	('США'),
+    ('США'),
     ('Великобритания'),
     ('Канада'),
     ('Германия'),
@@ -184,15 +184,15 @@ VALUES
 SELECT * FROM manufacturer_country;
 
 SELECT 
-	country_id AS '№',
-	country_title AS 'Страна'
+     country_id AS '№',
+     country_title AS 'Страна'
 FROM manufacturer_country;
 
 -- заполнение таблицы ID фильмов и соответсвующих жанров
 INSERT INTO cinema_genre
-	(film_id, genre_id)
+    (film_id, genre_id)
 VALUES
-	(1, 1), (1, 2), (1, 3),
+    (1, 1), (1, 2), (1, 3),
     (2, 1), (2, 4), (2, 6), (2, 9), (2, 8),
     (3, 5), (3, 1), (3, 7),
     (4, 1), (4, 10), (4, 6),
@@ -203,15 +203,15 @@ VALUES
 SELECT * FROM cinema_genre;
 
 SELECT 
-	film_id AS '№ фильма', 
+    film_id AS '№ фильма', 
     genre_id AS '№ жанра'
 FROM cinema_genre;
 
 -- заполнение таблицы ID фильмов и соответсвующих студий
 INSERT INTO cinema_studio
-	(film_id, studio_id)
+    (film_id, studio_id)
 VALUES
-	(1, 1),
+    (1, 1),
     (2, 2), (2, 3), (2, 4),
     (3, 5), (3, 6), (3, 2), (3, 7), (3, 8),
     (4, 9), (4, 10),
@@ -222,15 +222,15 @@ VALUES
 SELECT * FROM cinema_studio;
      
 SELECT 
-	film_id AS '№ фильма', 
+    film_id AS '№ фильма', 
     studio_id AS '№ студии'
 FROM cinema_studio;
 
 -- заполнение таблицы ID фильмов и соответсвующих стран
 INSERT INTO cinema_country
-	(film_id, country_id)
+    (film_id, country_id)
 VALUES
-	(1, 1),
+    (1, 1),
     (2, 1),
     (3, 1), (3, 2), (2, 3),
     (4, 1),
@@ -241,7 +241,7 @@ VALUES
 SELECT * FROM cinema_country;
 
 SELECT 
-	film_id AS '№ фильма', 
+    film_id AS '№ фильма', 
     country_id AS '№ страны'
 FROM cinema_countr
 
