@@ -79,3 +79,154 @@ CREATE TABLE cinema_country
     FOREIGN KEY (film_id) REFERENCES cinema (film_id) ON DELETE CASCADE,
     FOREIGN KEY (country_id) REFERENCES manufacturer_country (country_id) ON DELETE CASCADE
 );
+
+-- заполнение таблицы фильмов
+INSERT INTO cinema
+	(film_title, film_original_name, film_released, age_limit)
+VALUES 
+	('Зелёная миля', 'The Green Mile', 1999, '16+'),
+    ('Форест Гамп', 'Forrest Gump', 1994, '16+'),
+    ('Интерстеллар', 'Interstellar', 2014, '16+'),
+    ('Игры разума', 'A Beautiful Mind', 2001, '12+'),
+    ('Бойцовский клуб', 'Fight Club', 1999, '18+'),
+    ('Остров проклятых', 'Shutter Island', 2009, '18+'),
+    ('Начало', 'Inception', 2010, '12+');
+
+SELECT * FROM cinema;
+
+-- оператор псевдонима
+SELECT 
+	film_id AS '№',
+    film_title AS 'Название',
+    film_released AS 'Премьера фильма',
+    film_original_name AS 'Оригинальное название',
+    age_limit AS 'Возрастное ограничение'
+FROM cinema;
+
+-- заполнение таблицы жанров
+INSERT INTO genre
+	(genre_title)
+VALUES
+	('Драма'),
+	('Фэнтези'),
+    ('Криминал'),
+    ('Комедия'),
+    ('Фантастика'),
+    ('Мелодрама'),
+    ('Приключения'),
+    ('Военный'),
+    ('История'),
+    ('Биография'),
+    ('Триллер'),
+    ('Детектив'),
+    ('боевик'),
+    ('Ужасы');
+
+SELECT * FROM genre;
+
+-- оператор псевдонима
+SELECT 
+	genre_id AS '№ жанра',
+	genre_title AS 'Жанр'
+FROM genre;
+
+-- заполнение таблицы студий
+INSERT INTO creator_studio
+	(studio_title)
+VALUES
+	('Warner Hollywood Studios'),
+    ('Paramount Pictures'),
+    ('The Steve Tisch Company'),
+    ('Wendy Finerman Productions'),
+    ('Legendary Pictures'), 
+    ('Lynda Obst Productions'),  
+    ('Syncopy'), 
+    ('Warner Bros. Pictures'),
+    ('Imagine Entertainment'), 
+    ('Universal Pictures'),
+    ('Fox 2000 Pictures'), 	
+    ('Linson Films'),
+    ('Appian Way'),
+    ('Sikelia Productions');
+
+SELECT * FROM creator_studio;
+
+SELECT
+	studio_id AS '№', 
+    studio_title AS 'Студия'
+FROM creator_studio;
+
+-- заполнение таблицы стран
+INSERT INTO manufacturer_country
+	(country_title)
+VALUES
+	('США'),
+    ('Великобритания'),
+    ('Канада'),
+    ('Германия'),
+    ('Италия'),
+    ('СССР');
+
+SELECT * FROM manufacturer_country;
+
+SELECT 
+	country_id AS '№',
+	country_title AS 'Страна'
+FROM manufacturer_country;
+
+-- заполнение таблицы ID фильмов и соответсвующих жанров
+INSERT INTO cinema_genre
+	(film_id, genre_id)
+VALUES
+	(1, 1), (1, 2), (1, 3),
+    (2, 1), (2, 4), (2, 6), (2, 9), (2, 8),
+    (3, 5), (3, 1), (3, 7),
+    (4, 1), (4, 10), (4, 6),
+    (5, 11), (5, 1), (5, 3),
+    (6, 11), (6, 12), (6, 1),
+    (7, 5), (7, 13), (7, 11), (7, 1), (7, 12);
+
+SELECT * FROM cinema_genre;
+
+SELECT 
+	film_id AS '№ фильма', 
+    genre_id AS '№ жанра'
+FROM cinema_genre;
+
+-- заполнение таблицы ID фильмов и соответсвующих студий
+INSERT INTO cinema_studio
+	(film_id, studio_id)
+VALUES
+	(1, 1),
+    (2, 2), (2, 3), (2, 4),
+    (3, 5), (3, 6), (3, 2), (3, 7), (3, 8),
+    (4, 9), (4, 10),
+    (5, 11), (5, 12),
+    (6, 13), (6, 2),
+    (7, 5), (7, 7), (7, 8);
+
+SELECT * FROM cinema_studio;
+     
+SELECT 
+	film_id AS '№ фильма', 
+    studio_id AS '№ студии'
+FROM cinema_studio;
+
+-- заполнение таблицы ID фильмов и соответсвующих стран
+INSERT INTO cinema_country
+	(film_id, country_id)
+VALUES
+	(1, 1),
+    (2, 1),
+    (3, 1), (3, 2), (2, 3),
+    (4, 1),
+    (5, 1), (5, 4),
+    (6, 1),
+    (7, 1), (7, 2);
+
+SELECT * FROM cinema_country;
+
+SELECT 
+	film_id AS '№ фильма', 
+    country_id AS '№ страны'
+FROM cinema_countr
