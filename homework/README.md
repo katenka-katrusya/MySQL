@@ -23,7 +23,7 @@ CREATE SCHEMA 'homework1';
 ```
 CREATE TABLE mobile_phone
 ( 
-	phone_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    phone_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50),
     manufacturer VARCHAR(30),
     product_count INTEGER,
@@ -35,7 +35,7 @@ CREATE TABLE mobile_phone
 INSERT INTO mobile_phone
 	(product_name, manufacturer, product_count, price)
 VALUES
-	('Galaxy S23', 'Samsung', 8, 79999),
+    ('Galaxy S23', 'Samsung', 8, 79999),
     ('50', 'Honor', 1, 26999),
     ('iPhone 13', 'Apple', 3, 64399),
     ('Redmi A1+', 'Xiaomi', 1, 4999),
@@ -49,7 +49,7 @@ VALUES
 ## SELECT-запрос, который выводит название товара, производителя и цену для товаров, количество которых превышает 2
 ```
 SELECT 
-	product_name as 'Название товара',
+    product_name as 'Название товара',
     manufacturer as 'Производитель',
     price as 'Цена'
 FROM mobile_phone
