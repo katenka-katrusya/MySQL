@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS homework;
+CREATE DATABASE homework;
+USE homework;
